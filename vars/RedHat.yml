@@ -1,0 +1,3 @@
+---
+  # vars for RedHat-family OSes
+  redis: "redis"

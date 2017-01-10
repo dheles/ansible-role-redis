@@ -1,0 +1,13 @@
+---
+- name: include os-specific variables
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: install epel repo for redis on CentOS
+  yum: name=epel-release state=present
+  when: ansible_os_family == 'RedHat'
+
+- name: install redis
+  package:
+    name: "{{ redis }}"
+    state: present
+  notify: restart redis
